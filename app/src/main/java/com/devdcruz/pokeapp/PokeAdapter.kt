@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.devdcruz.pokeapp.databinding.ViewPokemonItemBinding
+import com.devdcruz.pokeapp.model.Pokemon
 
 class PokeAdapter(
-    private val pokemonList: List<Pokemon>,
+    var pokemonList: List<Pokemon>,
     private val pokemonClickedListener: (Pokemon) -> Unit
 ): RecyclerView.Adapter<PokeAdapter.ViewHolder>(){
 
@@ -28,10 +29,11 @@ class PokeAdapter(
 
     class ViewHolder(private val binding: ViewPokemonItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(pokemon: Pokemon){
-            binding.tvNamePok.text = pokemon.name
-            binding.tvTypePok.text = pokemon.type
+            binding.tvNamePok.text = pokemon.title
+
             Glide.with(binding.root.context)
-                .load(pokemon.pokImage).into(binding.ivPokemon)
+                .load("https://image.tmdb.org/t/p/w185/${pokemon.poster_path}")
+                .into(binding.ivPokemon)
         }
 
     }

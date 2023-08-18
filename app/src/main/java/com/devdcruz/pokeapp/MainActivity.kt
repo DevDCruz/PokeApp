@@ -2,8 +2,11 @@ package com.devdcruz.pokeapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.devdcruz.pokeapp.databinding.ActivityMainBinding
+import com.devdcruz.pokeapp.model.PokemonDbClient
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,21 +14,21 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.recyclerV.adapter = PokeAdapter(
-            listOf(
-                Pokemon("Bulvasur", "Planta", "https://loremflickr.com/320/240?lock=1"),
-                Pokemon("Ivisur", "Planta", "https://loremflickr.com/320/240?lock=2"),
-                Pokemon("Venusaur", "Planta", "https://loremflickr.com/320/240?lock=3"),
-                Pokemon("Squirtle", "Agua", "https://loremflickr.com/320/240?lock="),
-                Pokemon("Wartottle", "Agua", "https://loremflickr.com/320/240?lock=5"),
-                Pokemon("Blastoise", "Agua", "https://loremflickr.com/320/240?lock=6"),
-                Pokemon("Charmader", "Fuego", "https://loremflickr.com/320/240?lock=7"),
-                Pokemon("Charmaleon", "Fuego", "https://loremflickr.com/320/240?lock=8"),
-                Pokemon("Charizard", "Fuego", "https://loremflickr.com/320/240?lock=9"),
-            )
-        ) {pokemon ->
+        val pokeAdapter = PokeAdapter(emptyList()) { pokemon ->
             Toast
-                .makeText(this@MainActivity, pokemon.name, Toast.LENGTH_LONG).show()
+                .makeText(this@MainActivity, pokemon.title, Toast.LENGTH_LONG).show()
+        }
+        binding.recyclerV.adapter = pokeAdapter
+
+        thread {
+            val apikey = getString(R.string.api_key)
+            val popularMovies = PokemonDbClient.service.lisPopularMovies(apikey)
+            val body = popularMovies.execute().body()
+            runOnUiThread{
+                if (body!= null)
+                    pokeAdapter.pokemonList = body.results
+                    pokeAdapter.notifyDataSetChanged()
+            }
         }
     }
 }

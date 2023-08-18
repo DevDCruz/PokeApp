@@ -19,10 +19,4 @@
         android:layout_height="wrap_content"
         tools:text="Name Pok" />
 
-    <TextView
-        android:id="@+id/tvTypePok"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Type Pok" />
-
 </LinearLayout>

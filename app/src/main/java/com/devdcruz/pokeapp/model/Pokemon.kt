@@ -1,6 +1,6 @@
 package com.devdcruz.pokeapp.model
 
-data class PokemonDb(
+data class Pokemon(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,

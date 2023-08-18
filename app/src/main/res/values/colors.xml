@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Theme Light -->
+    <!-- Primary brand color -->
+    <color name="ColorRed">#F60505</color>
+    <color name="ColorRedBrown">#CC0404</color>
+    <color name="ColorWhite">#FFFFFF</color>
+    <!-- Secondary brand color  -->
+    <color name="ColorBlue">#072BAE</color>
+    <color name="ColorYellow">#FFEB3B</color>
+    <color name="WhiteII">#D5D4CE</color>
 </resources>
