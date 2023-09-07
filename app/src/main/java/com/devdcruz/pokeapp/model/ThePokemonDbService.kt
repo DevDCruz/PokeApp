@@ -7,5 +7,5 @@ import retrofit2.http.Query
 interface ThePokemonDbService {
 
     @GET("popular")
-    fun lisPopularMovies(@Query("api_key") apiKey: String) : Call<PokemonDbResult>
+    suspend fun lisPopularMovies(@Query("api_key") apiKey: String) : PokemonDbResult
 }

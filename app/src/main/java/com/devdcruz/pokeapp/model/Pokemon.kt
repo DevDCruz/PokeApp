@@ -1,5 +1,9 @@
 package com.devdcruz.pokeapp.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Pokemon(
     val adult: Boolean,
     val backdrop_path: String,
@@ -15,4 +19,4 @@ data class Pokemon(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)
+) : Parcelable
