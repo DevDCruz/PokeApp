@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="2dp">
 
-    <ImageView
+    <com.devdcruz.pokeapp.AspectRatioKImageView
         android:id="@+id/ivPokemon"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         app:srcCompat="@mipmap/ic_launcher" />
 
@@ -17,6 +18,11 @@
         android:id="@+id/tvNamePok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/ColorBlue"
+        android:gravity="center"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/ColorRed"
         tools:text="Name Pok" />
 
 </LinearLayout>
