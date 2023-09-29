@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ColorRed"
-    tools:context=".MainActivity">
+    tools:context=".ui.main.MainActivity">
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/recyclerV"
@@ -17,8 +17,8 @@
        app:layout_constraintStart_toStartOf="parent"
 
        app:layout_constraintTop_toTopOf="parent"
-       app:spanCount="2"
+       app:spanCount="3"
        tools:itemCount="9"
-       tools:listitem="@layout/view_pokemon_item" />
+       tools:listitem="@layout/view_movie_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
